@@ -149,7 +149,7 @@ class BigramLanguageModel(nn.Module):
         # each token directly reads off the logits for the next token from a lookup table
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd) # CHANGE 1
         # to go from token to logits we are going to need linear layer
-        self.lm_head = nn.Linear(n_embd, vocab_size) # CHANGE 3
+        self.lm_head = nn.Linear(n_embd, vocab_size) # CHANGE 3 lm = language model head
 
         # Comment (start)
         # so, far we have taken these idx and we have 
