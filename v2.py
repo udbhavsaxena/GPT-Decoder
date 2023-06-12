@@ -160,6 +160,8 @@ class BigramLanguageModel(nn.Module):
         # position embdeddin table self.position
         #Comment (end)
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
+        # we lost this info when we took avg so this reassures that we putting pos_emb back
+        # and giving the information back again 
         # CHANGE 5
 
         #CHANGE 8
