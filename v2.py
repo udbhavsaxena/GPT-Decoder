@@ -134,7 +134,7 @@ class Block(nn.Module):
         self.ln2 = nn.LayerNorm(n_embd) # # common practice to do before feeding 
         
         # This is the only slight deviation from the paper 'Attention is All you Need'
-        # PreNorm Activation
+        # PreNorm Activation Formulation
 
 
     def forward(self,x):
