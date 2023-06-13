@@ -130,8 +130,11 @@ class Block(nn.Module):
         self.sa = MultiHeadAttention(n_head,head_size)
         self.ffwd = FeedForward(n_embd)
         #CHANGE - add layer norm but not exactly like the paper
-        self.ln1 = nn.LayerNorm(n_embd)
-        self.ln2 = nn.LayerNorm(n_embd)
+        self.ln1 = nn.LayerNorm(n_embd) # common practice to do before feeding 
+        self.ln2 = nn.LayerNorm(n_embd) # # common practice to do before feeding 
+        
+        # This is the only slight deviation from the paper 'Attention is All you Need'
+        # PreNorm Activation
 
 
     def forward(self,x):
