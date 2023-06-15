@@ -133,8 +133,7 @@ class Block(nn.Module):
         self.ln1 = nn.LayerNorm(n_embd) # common practice to do before feeding 
         self.ln2 = nn.LayerNorm(n_embd) # # common practice to do before feeding 
         
-        # This is the only slight deviation from the paper 'Attention is All you Need'
-        # PreNorm Activation Formulation
+
 
 
     def forward(self,x):
@@ -153,23 +152,7 @@ class BigramLanguageModel(nn.Module):
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd) # CHANGE 1
         # to go from token to logits we are going to need linear layer
         self.lm_head = nn.Linear(n_embd, vocab_size) # CHANGE 3 lm = language model head
-
-        # Comment (start)
-        # so, far we have taken these idx and we have 
-        # encoded them based on the identity of the tokens
-        #inside idx. So, what is oftenly done in practice -
-        # we are not only just encoding the identity of these tokens
-        # but also there positions, so we are going to get second
-        # position embdeddin table self.position
-        #Comment (end)
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
-        # we lost this info when we took avg so this reassures that we putting pos_emb back
-        # and giving the information back again 
-        # CHANGE 5
-
-        #CHANGE 8
-        # self.sa_head = Head(n_embd)
-        #CHANGE 16 - init ffwd
         self.ffwd = FeedForward(n_embd)
         #CHANGE 14
         self.sa_heads = MultiHeadAttention(4, n_embd//4)
