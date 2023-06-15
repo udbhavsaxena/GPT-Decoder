@@ -193,7 +193,7 @@ class BigramLanguageModel(nn.Module):
         tok_emb = self.token_embedding_table(idx) # (B,T,C) CHANGE 2
         #CHANGE 6
         pos_emb = self.position_embedding_table(torch.arange(T,device = device)) # T,C
-        # torch.arange(T int from 0 to T-1
+        # torch.arange(T int from 0 to T-1), to give a sense of recurrence to the model 
         x = tok_emb + pos_emb # (B,T,C) # again broadcasted
         #CHANGE 9 - self-attention head
         # x = self.sa_heads(x) # apply one of head self-attn(B,T,C)
